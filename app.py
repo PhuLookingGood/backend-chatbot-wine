@@ -1,7 +1,6 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from models.langchain_gemini import generate_answer
+from routes.products import router as product
 
 app = FastAPI()
 
@@ -13,13 +12,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-class MessageRequest(BaseModel):
-    message: str
-
-
-@app.post("/answer")
-async def receive_answer(data: MessageRequest):
-    result = generate_answer(data.message)
-    print(result)
-    return {"received_question": data.message, "answer": result}
+app.include_router(product)

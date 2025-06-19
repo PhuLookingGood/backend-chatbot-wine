@@ -13,8 +13,7 @@ llm = ChatGoogleGenerativeAI(
 )
 
 
-def generate_answer(question: str):
+def question_product(question: str):
     prompt = f"""ข้อมูลสินค้าจาก API: {get_products()} ข้อมูลผู้ติดต่อจาก API: {get_contacts()} คำถามจากผู้ใช้: {question} กรุณาตอบโดยอิงจากข้อมูลด้านบนเท่านั้น"""
     response = llm.invoke(prompt)
-    print(response.content)
     return response.content
