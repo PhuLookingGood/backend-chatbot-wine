@@ -1,5 +1,5 @@
 from schemas.schemas import MessageRequest
-from models.langchain_gemini import question_product
+from prompts.products import question_product
 
 
 async def findAll(data: MessageRequest):
