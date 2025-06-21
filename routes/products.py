@@ -5,6 +5,6 @@ from controllers.products import findAll
 router = APIRouter()
 
 
-@router.post("/answer")
+@router.post("/send-msg")
 async def product(data: MessageRequest):
     return await findAll(data)
