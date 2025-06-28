@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.products import router as product
+from routes.rag import router as rag_company
+from routes.chat import router as chat_router
 
 app = FastAPI()
 
@@ -13,3 +15,5 @@ app.add_middleware(
 )
 
 app.include_router(product)
+app.include_router(rag_company)
+app.include_router(chat_router)
